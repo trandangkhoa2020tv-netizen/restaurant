@@ -1,14 +1,27 @@
-# data.py
-products = [
-    {"id": 1, "name": "Cơm chiên", "price": 35000, "category": "Món chính", "status": "còn"},
-    {"id": 2, "name": "Phở bò", "price": 45000, "category": "Món chính", "status": "còn"},
-    {"id": 3, "name": "Nước cam", "price": 20000, "category": "Thức uống", "status": "còn"},
-    {"id": 4, "name": "Rau luộc", "price": 25000, "category": "Món phụ", "status": "hết"},
-]
-
-users = [
-    {"email": "admin@res.com", "password": "admin", "role": "admin"},
-    {"email": "staff@res.com", "password": "123", "role": "staff"},
+menu = [
+    {"id": 1, "name": "Phở bò", "price": 40000, "category": "main"},
+    {"id": 2, "name": "Cà phê sữa", "price": 25000, "category": "drink"},
 ]
 
 orders = []
+
+def show_menu():
+    print("\n=== DANH SÁCH MÓN ĂN ===")
+    for m in menu:
+        print(f"{m['id']}. {m['name']} - {m['price']}đ")
+
+def order_food(customer):
+    cart = []
+    while True:
+        show_menu()
+        choice = input("Nhập ID món muốn thêm (hoặc 0 để đặt hàng): ")
+        if choice == "0":
+            break
+        for m in menu:
+            if str(m['id']) == choice:
+                quantity = int(input("Số lượng: "))
+                cart.append({"item": m, "qty": quantity})
+                print("Đã thêm vào giỏ hàng!")
+    if cart:
+        orders.append({"customer": customer.name, "items": cart, "status": "Mới đặt"})
+        print("Đơn hàng đã được tạo!")
