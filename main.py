@@ -26,9 +26,9 @@ def main():
                 elif user.role == "admin":
                     admin_menu(user)
                 else:
-                    print("❌ Vai trò người dùng không hợp lệ.")
+                    print("Vai trò người dùng không hợp lệ.")
             else:
-                print("❌ Đăng nhập thất bại. Hãy thử lại.\n")
+                print("Đăng nhập thất bại. Hãy thử lại.\n")
 
         elif choice == "0":
             print("Tạm biệt! Cảm ơn bạn đã sử dụng hệ thống.")

@@ -29,9 +29,9 @@ def customer_menu(customer):
             for o in orders:
                 if o["customer"] == name and o["status"] == "Mới đặt":
                     orders.remove(o)
-                    print("✅ Đã hủy đơn thành công.")
+                    print("Đã hủy đơn thành công.")
                     break
             else:
-                print("❌ Không có đơn nào để hủy.")
+                print("Không có đơn nào để hủy.")
         else:
             break

@@ -79,15 +79,15 @@ def order_food(customer):
                 if tables[table_id] == "Trống":
                     tables[table_id] = f"Đã đặt bởi {customer.name}"
                     selected_table = table_id
-                    print(f"✅ Bàn {table_id} đã được đặt thành công!")
+                    print(f"Bàn {table_id} đã được đặt thành công!")
                 else:
-                    print("❌ Bàn này đã có người đặt, vui lòng chọn bàn khác.")
+                    print("Bàn này đã có người đặt, vui lòng chọn bàn khác.")
                     return
             else:
-                print("❌ Số bàn không hợp lệ.")
+                print("Số bàn không hợp lệ.")
                 return
         except ValueError:
-            print("❌ Vui lòng nhập số bàn hợp lệ (1-10).")
+            print("Vui lòng nhập số bàn hợp lệ (1-10).")
             return
 
     for cat, items in menu_data.items():
@@ -105,8 +105,8 @@ def order_food(customer):
                     "status": "Mới đặt"
                 }
                 orders.append(order)
-                print(f"✅ Đặt món '{m[1]}' thành công! Tổng: {total:,}đ")
+                print(f"Đặt món '{m[1]}' thành công! Tổng: {total:,}đ")
                 if method == "đặt bàn":
-                    print(f"📍 Bàn: {selected_table}")
+                    print(f"Bàn: {selected_table}")
                 return
-    print("❌ Mã món không hợp lệ.")
+    print("Mã món không hợp lệ.")

@@ -19,7 +19,7 @@ def staff_menu():
         elif c == "0":
             break
         else:
-            print("⚠️ Lựa chọn không hợp lệ, vui lòng nhập lại.")
+            print("Lựa chọn không hợp lệ, vui lòng nhập lại.")
 
 
 # =======================
@@ -27,7 +27,7 @@ def staff_menu():
 # =======================
 def view_orders():
     if not orders:
-        print("❌ Chưa có đơn hàng nào.")
+        print("Chưa có đơn hàng nào.")
         return
 
     print("\n=== DANH SÁCH ĐƠN HÀNG ===")
@@ -35,12 +35,12 @@ def view_orders():
         print(f"\nĐơn #{i}:")
         print(f"👤 Khách hàng: {o['customer']}")
         print(f"🍽 Món: {o['food']} x {o['quantity']}")
-        print(f"📝 Ghi chú: {o['note']}")
-        print(f"🚚 Hình thức: {o['method']}")
+        print(f"Ghi chú: {o['note']}")
+        print(f"Hình thức: {o['method']}")
         if o["table"] != "-":
-            print(f"📍 Bàn: {o['table']}")
-        print(f"💰 Tổng tiền: {o['total']:,}đ")
-        print(f"📦 Trạng thái: {o['status']}")
+            print(f"Bàn: {o['table']}")
+        print(f"Tổng tiền: {o['total']:,}đ")
+        print(f"Trạng thái: {o['status']}")
         print("-" * 40)
 
 
@@ -54,7 +54,7 @@ def update_order_status():
         if 0 <= order_index < len(orders):
             new_status = input("Trạng thái mới (xác nhận / chế biến / hoàn tất / hủy): ").strip()
             orders[order_index]["status"] = new_status
-            print("✅ Đã cập nhật trạng thái đơn hàng!")
+            print("Đã cập nhật trạng thái đơn hàng!")
 
             # Nếu đơn là đặt bàn và bị hủy hoặc hoàn tất → giải phóng bàn
             order = orders[order_index]
@@ -64,9 +64,9 @@ def update_order_status():
                     tables[table_id] = "Trống"
                     print(f"🧹 Bàn {table_id} đã được dọn và chuyển về trạng thái trống.")
         else:
-            print("❌ Số thứ tự không hợp lệ.")
+            print("Số thứ tự không hợp lệ.")
     except ValueError:
-        print("⚠️ Vui lòng nhập số hợp lệ.")
+        print("Vui lòng nhập số hợp lệ.")
 
 
 # =======================
@@ -87,7 +87,7 @@ def manage_tables():
         elif opt == "0":
             break
         else:
-            print("⚠️ Vui lòng chọn đúng số.")
+            print("Vui lòng chọn đúng số.")
 
 
 def show_tables():
@@ -103,8 +103,8 @@ def update_table_status():
         if table_id in tables:
             new_status = input("Trạng thái mới (Trống / Đang phục vụ / Đã dọn): ").capitalize()
             tables[table_id] = new_status
-            print(f"✅ Đã cập nhật bàn {table_id} thành: {new_status}")
+            print(f"Đã cập nhật bàn {table_id} thành: {new_status}")
         else:
-            print("❌ Không tồn tại bàn này.")
+            print("Không tồn tại bàn này.")
     except ValueError:
-        print("⚠️ Nhập số bàn hợp lệ (1-10).")
+        print("Nhập số bàn hợp lệ (1-10).")

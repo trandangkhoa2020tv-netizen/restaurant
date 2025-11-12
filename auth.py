@@ -21,7 +21,7 @@ def register():
         user = Customer(name, phone, email, password)
 
     users.append(user)
-    print(f"✅ Đăng ký {role} thành công!\n")
+    print(f"Đăng ký {role} thành công!\n")
 
 
 def login():
@@ -31,10 +31,10 @@ def login():
 
     for u in users:
         if u.email == email and u.password == password:
-            print(f"✅ Đăng nhập thành công ({u.role})!")
+            print(f"Đăng nhập thành công ({u.role})!")
             return u
 
-    print("❌ Sai thông tin đăng nhập.")
+    print("Sai thông tin đăng nhập.")
     forgot = input("Bạn có muốn đặt lại mật khẩu? (y/n): ").lower()
     if forgot == "y":
         forgot_password(email)
@@ -46,10 +46,10 @@ def forgot_password(email):
         if u.email == email:
             new_password = generate_random_password()
             u.password = new_password
-            print(f"🔑 Mật khẩu mới của bạn là: {new_password}")
-            print("⚠️ Hãy đổi lại mật khẩu sau khi đăng nhập!\n")
+            print(f"Mật khẩu mới của bạn là: {new_password}")
+            print("Hãy đổi lại mật khẩu sau khi đăng nhập!\n")
             return
-    print("❌ Không tìm thấy tài khoản với email này.\n")
+    print("Không tìm thấy tài khoản với email này.\n")
 
 
 def generate_random_password(length=8):

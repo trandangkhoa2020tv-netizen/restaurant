@@ -22,14 +22,14 @@ def admin_menu():
             flavor = input("Khẩu vị: ")
             price = int(input("Giá bán: "))
             menu_data[cat].append((code, name, flavor, price, "Còn", 0))
-            print("✅ Đã thêm món mới!")
+            print("Đã thêm món mới!")
         elif c == "3":
             code = input("Nhập mã món cần xóa: ").upper()
             for cat, items in menu_data.items():
                 for m in items:
                     if m[0] == code:
                         items.remove(m)
-                        print("✅ Đã xóa món!")
+                        print("Đã xóa món!")
                         break
         else:
             break
