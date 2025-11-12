@@ -1,80 +1,77 @@
 # menu_order.py
-menu = {
-    "lau": [
-        {"id": "L001", "name": "Lẩu Thái hải sản chua cay", "flavor": "Chua cay, đậm đà", "price": 289000, "status": "Còn", "orders": 152},
-        {"id": "L002", "name": "Lẩu bò nhúng giấm", "flavor": "Chua nhẹ, thơm giấm, ngọt thịt", "price": 269000, "status": "Còn", "orders": 134},
-        {"id": "L003", "name": "Lẩu nấm chay thanh đạm", "flavor": "Ngọt tự nhiên, thanh mát", "price": 239000, "status": "Còn", "orders": 78},
-        {"id": "L004", "name": "Lẩu kim chi Hàn Quốc", "flavor": "Cay nồng, vị đậm", "price": 259000, "status": "Còn", "orders": 201},
+
+menu_data = {
+    "Lẩu": [
+        ("L001", "Lẩu Thái hải sản chua cay", "Chua cay, đậm đà", 289000, "Còn", 152),
+        ("L002", "Lẩu bò nhúng giấm", "Chua nhẹ, thơm giấm, ngọt thịt", 269000, "Còn", 134),
+        ("L003", "Lẩu nấm chay thanh đạm", "Ngọt tự nhiên, thanh mát", 239000, "Còn", 78),
+        ("L004", "Lẩu kim chi Hàn Quốc", "Cay nồng, vị đậm", 259000, "Còn", 201),
     ],
-    "kho": [
-        {"id": "K001", "name": "Cánh gà chiên nước mắm", "flavor": "Mặn ngọt, giòn tan", "price": 89000, "status": "Còn", "orders": 243},
-        {"id": "K002", "name": "Bò lúc lắc khoai tây chiên", "flavor": "Đậm vị, béo nhẹ", "price": 119000, "status": "Còn", "orders": 175},
-        {"id": "K003", "name": "Cá hồi áp chảo sốt bơ tỏi", "flavor": "Béo ngậy, thơm bơ", "price": 139000, "status": "Còn", "orders": 92},
-        {"id": "K004", "name": "Tôm rim me", "flavor": "Chua ngọt, đậm đà", "price": 109000, "status": "Còn", "orders": 84},
-        {"id": "K005", "name": "Mực nướng sa tế", "flavor": "Cay thơm, giòn nhẹ", "price": 115000, "status": "Còn", "orders": 148},
-        {"id": "K006", "name": "Sườn non rim mặn ngọt", "flavor": "Đậm vị, mềm thơm", "price": 99000, "status": "Còn", "orders": 121},
-        {"id": "K007", "name": "Cơm chiên hải sản", "flavor": "Thơm, vừa vị", "price": 79000, "status": "Còn", "orders": 187},
-        {"id": "K008", "name": "Gỏi bò bóp thấu", "flavor": "Chua ngọt, cay nhẹ", "price": 85000, "status": "Còn", "orders": 133},
+    "Món khô": [
+        ("K001", "Cánh gà chiên nước mắm", "Mặn ngọt, giòn tan", 89000, "Còn", 243),
+        ("K002", "Bò lúc lắc khoai tây chiên", "Đậm vị, béo nhẹ", 119000, "Còn", 175),
+        ("K003", "Cá hồi áp chảo sốt bơ tỏi", "Béo ngậy, thơm bơ", 139000, "Còn", 92),
+        ("K004", "Tôm rim me", "Chua ngọt, đậm đà", 109000, "Còn", 84),
+        ("K005", "Mực nướng sa tế", "Cay thơm, giòn nhẹ", 115000, "Còn", 148),
+        ("K006", "Sườn non rim mặn ngọt", "Đậm vị, mềm thơm", 99000, "Còn", 121),
+        ("K007", "Cơm chiên hải sản", "Thơm, vừa vị", 79000, "Còn", 187),
+        ("K008", "Gỏi bò bóp thấu", "Chua ngọt, cay nhẹ", 85000, "Còn", 133),
     ],
-    "drink": [
-        {"id": "D001", "name": "Coca-Cola", "flavor": "Ngọt, có gas", "price": 25000, "status": "Còn", "orders": 312},
-        {"id": "D002", "name": "Pepsi", "flavor": "Ngọt, có gas", "price": 25000, "status": "Còn", "orders": 289},
-        {"id": "D003", "name": "7Up", "flavor": "Ngọt nhẹ, thanh mát", "price": 25000, "status": "Còn", "orders": 214},
-        {"id": "D004", "name": "Trà đào cam sả", "flavor": "Ngọt thanh, thơm mùi sả", "price": 39000, "status": "Còn", "orders": 185},
-        {"id": "D005", "name": "Nước suối Aquafina", "flavor": "Nhẹ, không gas", "price": 15000, "status": "Còn", "orders": 267},
+    "Nước uống": [
+        ("D001", "Coca-Cola", "Ngọt, có gas", 25000, "Còn", 312),
+        ("D002", "Pepsi", "Ngọt, có gas", 25000, "Còn", 289),
+        ("D003", "7Up", "Ngọt nhẹ, thanh mát", 25000, "Còn", 214),
+        ("D004", "Trà đào cam sả", "Ngọt thanh, thơm mùi sả", 39000, "Còn", 185),
+        ("D005", "Nước suối Aquafina", "Nhẹ, không gas", 15000, "Còn", 267),
     ]
 }
 
 orders = []
 
-def show_menu():
-    print("\n==================== MENU NHÀ HÀNG ====================")
-    sections = {
-        "lau": "🍲 MÓN LẨU",
-        "kho": "🍗 MÓN KHÔ",
-        "drink": "🥤 NƯỚC UỐNG"
-    }
 
-    for key, title in sections.items():
-        print(f"\n--- {title} ---")
-        print("{:<6} {:<35} {:<25} {:<10} {:<8} {:<10}".format(
-            "Mã", "Tên món", "Khẩu vị", "Giá", "TT", "Lượt đặt"
-        ))
-        print("-" * 100)
-        for m in menu[key]:
-            print("{:<6} {:<35} {:<25} {:<10,.0f} {:<8} {:<10}".format(
-                m["id"], m["name"], m["flavor"], m["price"], m["status"], m["orders"]
-            ))
+def show_menu():
+    print("\n========== DANH SÁCH MÓN ĂN ==========")
+    for cat, items in menu_data.items():
+        print(f"\n--- {cat.upper()} ---")
+        print(f"{'Mã':<6} {'Tên món':<35} {'Khẩu vị':<25} {'Giá':<10} {'Tình trạng':<10}")
+        for m in items:
+            print(f"{m[0]:<6} {m[1]:<35} {m[2]:<25} {m[3]:<10,} {m[4]:<10}")
+    print("--------------------------------------")
+
+
+def search_food(keyword):
+    print(f"\n🔍 Kết quả tìm kiếm cho '{keyword}':")
+    found = False
+    for cat, items in menu_data.items():
+        for m in items:
+            if keyword.lower() in m[1].lower():
+                print(f"{m[0]} - {m[1]} ({m[3]:,}đ)")
+                found = True
+    if not found:
+        print("❌ Không tìm thấy món phù hợp.")
+
 
 def order_food(customer):
-    cart = []
-    while True:
-        show_menu()
-        choice = input("\nNhập MÃ MÓN muốn thêm (hoặc 0 để đặt hàng): ").upper()
-        if choice == "0":
-            break
+    show_menu()
+    code = input("Nhập mã món muốn đặt: ").upper()
+    quantity = int(input("Số lượng: "))
+    note = input("Ghi chú (ví dụ: ít cay, không hành,...): ")
+    delivery = input("Hình thức (tại chỗ/mang đi/giao hàng): ")
 
-        found = None
-        for category in menu.values():
-            for m in category:
-                if m["id"] == choice:
-                    found = m
-                    break
-
-        if found:
-            quantity = int(input("Số lượng: "))
-            note = input("Ghi chú (ví dụ: ít cay, không hành...): ")
-            cart.append({"item": found, "qty": quantity, "note": note})
-            print(f"✅ Đã thêm {found['name']} vào giỏ hàng!")
-        else:
-            print("❌ Không tìm thấy mã món này, vui lòng thử lại.")
-
-    if cart:
-        orders.append({
-            "customer": customer.name,
-            "items": cart,
-            "status": "Mới đặt"
-        })
-        print("\n🧾 Đơn hàng của bạn đã được tạo thành công!")
-    else:
-        print("❌ Chưa chọn món nào!")
+    for cat, items in menu_data.items():
+        for m in items:
+            if m[0] == code:
+                total = m[3] * quantity
+                order = {
+                    "customer": customer.name,
+                    "food": m[1],
+                    "quantity": quantity,
+                    "note": note,
+                    "method": delivery,
+                    "total": total,
+                    "status": "Mới đặt"
+                }
+                orders.append(order)
+                print(f"✅ Đặt món '{m[1]}' thành công! Tổng: {total:,}đ")
+                return
+    print("❌ Mã món không hợp lệ.")

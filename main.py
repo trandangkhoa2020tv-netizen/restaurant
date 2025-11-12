@@ -1,3 +1,4 @@
+# main.py
 from auth import register, login
 from customer import customer_menu
 from staff import staff_menu
