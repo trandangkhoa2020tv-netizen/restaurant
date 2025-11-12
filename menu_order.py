@@ -28,6 +28,9 @@ menu_data = {
 
 orders = []
 
+# Danh sách 10 bàn (mặc định trống)
+tables = {i: "Trống" for i in range(1, 11)}
+
 
 def show_menu():
     print("\n========== DANH SÁCH MÓN ĂN ==========")
@@ -51,12 +54,41 @@ def search_food(keyword):
         print("❌ Không tìm thấy món phù hợp.")
 
 
+def show_tables():
+    print("\n===== DANH SÁCH BÀN =====")
+    for t, status in tables.items():
+        print(f"Bàn {t}: {status}")
+    print("--------------------------")
+
+
 def order_food(customer):
     show_menu()
     code = input("Nhập mã món muốn đặt: ").upper()
     quantity = int(input("Số lượng: "))
     note = input("Ghi chú (ví dụ: ít cay, không hành,...): ")
-    delivery = input("Hình thức (tại chỗ/mang đi/giao hàng): ")
+    method = input("Hình thức (đặt bàn / mang đi / giao hàng): ").lower()
+
+    selected_table = None
+
+    # Nếu khách chọn đặt bàn
+    if method == "đặt bàn":
+        show_tables()
+        try:
+            table_id = int(input("Chọn số bàn (1-10): "))
+            if table_id in tables:
+                if tables[table_id] == "Trống":
+                    tables[table_id] = f"Đã đặt bởi {customer.name}"
+                    selected_table = table_id
+                    print(f"✅ Bàn {table_id} đã được đặt thành công!")
+                else:
+                    print("❌ Bàn này đã có người đặt, vui lòng chọn bàn khác.")
+                    return
+            else:
+                print("❌ Số bàn không hợp lệ.")
+                return
+        except ValueError:
+            print("❌ Vui lòng nhập số bàn hợp lệ (1-10).")
+            return
 
     for cat, items in menu_data.items():
         for m in items:
@@ -67,11 +99,14 @@ def order_food(customer):
                     "food": m[1],
                     "quantity": quantity,
                     "note": note,
-                    "method": delivery,
+                    "method": method,
+                    "table": selected_table if selected_table else "-",
                     "total": total,
                     "status": "Mới đặt"
                 }
                 orders.append(order)
                 print(f"✅ Đặt món '{m[1]}' thành công! Tổng: {total:,}đ")
+                if method == "đặt bàn":
+                    print(f"📍 Bàn: {selected_table}")
                 return
     print("❌ Mã món không hợp lệ.")
