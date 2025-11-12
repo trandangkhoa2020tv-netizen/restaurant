@@ -46,7 +46,7 @@ def view_orders():
 
 def update_order_status():
     if not orders:
-        print("❌ Không có đơn nào để cập nhật.")
+        print("Không có đơn nào để cập nhật.")
         return
 
     try:

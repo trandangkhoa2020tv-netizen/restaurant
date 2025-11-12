@@ -43,7 +43,7 @@ def show_menu():
 
 
 def search_food(keyword):
-    print(f"\n🔍 Kết quả tìm kiếm cho '{keyword}':")
+    print(f"\nKết quả tìm kiếm cho '{keyword}':")
     found = False
     for cat, items in menu_data.items():
         for m in items:
@@ -51,12 +51,14 @@ def search_food(keyword):
                 print(f"{m[0]} - {m[1]} ({m[3]:,}đ)")
                 found = True
     if not found:
-        print("❌ Không tìm thấy món phù hợp.")
+        print("Không tìm thấy món phù hợp.")
 
 
-def show_tables():
+def show_tables(only_empty=False):
     print("\n===== DANH SÁCH BÀN =====")
     for t, status in tables.items():
+        if only_empty and status != "Trống":
+            continue
         print(f"Bàn {t}: {status}")
     print("--------------------------")
 
@@ -66,13 +68,20 @@ def order_food(customer):
     code = input("Nhập mã món muốn đặt: ").upper()
     quantity = int(input("Số lượng: "))
     note = input("Ghi chú (ví dụ: ít cay, không hành,...): ")
-    method = input("Hình thức (đặt bàn / mang đi / giao hàng): ").lower()
 
+    print("\nChọn hình thức đặt:")
+    print("1. Đặt bàn (ăn tại nhà hàng)")
+    print("2. Giao hàng tận nơi")
+    print("3. Mang đi (tự đến lấy)")
+    choice = input("Nhập lựa chọn (1-3): ")
+
+    method = None
     selected_table = None
 
-    # Nếu khách chọn đặt bàn
-    if method == "đặt bàn":
-        show_tables()
+    if choice == "1":
+        method = "đặt bàn"
+        print("\n===== CÁC BÀN CÒN TRỐNG =====")
+        show_tables(only_empty=True)
         try:
             table_id = int(input("Chọn số bàn (1-10): "))
             if table_id in tables:
@@ -90,6 +99,15 @@ def order_food(customer):
             print("Vui lòng nhập số bàn hợp lệ (1-10).")
             return
 
+    elif choice == "2":
+        method = "giao hàng"
+    elif choice == "3":
+        method = "mang đi"
+    else:
+        print("Lựa chọn không hợp lệ.")
+        return
+
+    # Tìm món trong menu
     for cat, items in menu_data.items():
         for m in items:
             if m[0] == code:
