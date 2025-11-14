@@ -18,8 +18,8 @@ def register():
     print("\nChọn vai trò:")
     print("1. Customer (Khách hàng)")
     print("2. Staff (Nhân viên)")
-    print("3. Admin")
-    role_choice = input("Chọn (1-3): ")
+    print("3. Admin(Quản trị viên)")
+    role_choice = input("Chọn: ")
 
     # Xác định role dựa vào số
     if role_choice == "3":
