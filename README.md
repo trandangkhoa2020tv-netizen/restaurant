@@ -34,6 +34,7 @@ Nếu đặt món thành công, hệ thống sẽ ghi nhận đơn đặt món c
 	+ Quản lý người dùng
 	+ Quản lý đơn đặt món
     + Quản lý nhân viên 
+    
 II.Non-Functional Requirements
 -Usability
 Giao diện thân thiện, dễ sử dụng cho cả khách hàng và nhân viên nhà hàng.Hỗ trợ tiếng việt,Tự động điều chỉnh bố cục theo kích thước màn hình trên các thiết bị
