@@ -1,10 +1,12 @@
 # main.py
 
 # Import các chức năng: đăng ký, đăng nhập, menu khách hàng, nhân viên, admin
+# main.py (đúng khi chạy từ bên trong folder restaurant)
 from auth import register, login
-from restaurant.customer_menu import customer_menu
+from customer import customer_menu
 from staff import staff_menu
-from restaurant.admin_menu import admin_menu
+from admin import admin_menu
+
 
 def main():
     # Vòng lặp chính của chương trình (chạy liên tục cho đến khi chọn Thoát)
