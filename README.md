@@ -37,14 +37,14 @@ Nếu đặt món thành công, hệ thống sẽ ghi nhận đơn đặt món c
     
 II.Non-Functional Requirements
 -Usability
-Giao diện thân thiện, dễ sử dụng cho cả khách hàng và nhân viên nhà hàng.Hỗ trợ tiếng việt,Tự động điều chỉnh bố cục theo kích thước màn hình trên các thiết bị
+    Giao diện thân thiện, dễ sử dụng cho cả khách hàng và nhân viên nhà hàng.Hỗ trợ tiếng việt,Tự động điều chỉnh bố cục theo kích thước màn hình trên các thiết bị
 -Reliability
-Hệ thống phải hoạt động liên tục 24/7. Độ tin cậy > 99.9%.
+    Hệ thống phải hoạt động liên tục 24/7. Độ tin cậy > 99.9%.
 -Performance
-Hệ thống có thể đáp ứng cùng lúc nhiều khách hàng truy cập đồng thời.
+    Hệ thống có thể đáp ứng cùng lúc nhiều khách hàng truy cập đồng thời.
 -Supportability
-Dễ dàng bảo trì và mở rộng trong tương lai.
+    Dễ dàng bảo trì và mở rộng trong tương lai.
 -Security
-Khách hàng chỉ được phép xem và quản lý thông tin tài khoản và đơn đặt món của chính mình.
+    Khách hàng chỉ được phép xem và quản lý thông tin tài khoản và đơn đặt món của chính mình.
 -Design Constraints
-Hệ thống hoạt động trên nền tảng web, phát triển bằng Python.
+    ệ thống hoạt động trên nền tảng web, phát triển bằng Python.

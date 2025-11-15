@@ -10,66 +10,78 @@ def staff_menu():
         c = input("Chọn: ")
 
         if c == "1":
-            view_orders()            # Gọi hàm xem danh sách tất cả đơn
+            view_orders()
         elif c == "2":
-            update_order_status()    # Gọi hàm cập nhật trạng thái đơn
+            update_order_status()
         elif c == "3":
-            manage_tables()          # Gọi menu quản lý bàn
+            manage_tables()
         elif c == "0":
-            break                    # Thoát menu nhân viên
+            break
         else:
             print("Lựa chọn không hợp lệ, vui lòng nhập lại.")
 
 
-# ====================================================
 # 🔹 XEM TẤT CẢ ĐƠN HÀNG
-# ====================================================
 def view_orders():
     if not orders:
         print("Chưa có đơn hàng nào.")
         return
 
     print("\n=== DANH SÁCH ĐƠN HÀNG ===")
-    # Duyệt từng đơn hàng (orders là list of dict)
     for i, o in enumerate(orders, start=1):
         print(f"\nĐơn #{i}:")
         print(f"👤 Khách hàng: {o['customer']}")
-        print(f"🍽 Món: {o['food']} x {o['quantity']}")
+        print(f"🍽 Món: {o['item']} x {o['quantity']}")
         print(f"Ghi chú: {o['note']}")
         print(f"Hình thức: {o['method']}")
-        if o["table"] != "-":          # Nếu có đặt bàn thì in bàn
+        if o["table"] != "-":
             print(f"Bàn: {o['table']}")
         print(f"Tổng tiền: {o['total']:,}đ")
         print(f"Trạng thái: {o['status']}")
         print("-" * 40)
 
 
-# ====================================================
 # 🔹 CẬP NHẬT TRẠNG THÁI ĐƠN HÀNG
-# ====================================================
 def update_order_status():
     if not orders:
         print("Không có đơn nào để cập nhật.")
         return
 
     try:
-        # Chọn đơn theo số thứ tự
         order_index = int(input("Nhập số thứ tự đơn cần cập nhật: ")) - 1
 
         if 0 <= order_index < len(orders):
-            new_status = input("Trạng thái mới (xác nhận / chế biến / hoàn tất / hủy): ").strip()
+            print("\n=== CHỌN TRẠNG THÁI MỚI ===")
+            print("1. Xác nhận")
+            print("2. Chế biến")
+            print("3. Hoàn tất")
+            print("4. Hủy")
+            opt = input("Chọn: ")
+
+            status_map = {
+                "1": "xác nhận",
+                "2": "chế biến",
+                "3": "hoàn tất",
+                "4": "hủy"
+            }
+
+            if opt not in status_map:
+                print("Lựa chọn không hợp lệ.")
+                return
+
+            new_status = status_map[opt]
             orders[order_index]["status"] = new_status
             print("Đã cập nhật trạng thái đơn hàng!")
 
-            # Lấy ra đơn đang thao tác
             order = orders[order_index]
 
-            # Nếu đơn có bàn và trạng thái mới là hoàn tất hoặc hủy → bàn được giải phóng
+            # Giải phóng bàn khi hoàn tất hoặc hủy
             if order["table"] != "-" and new_status in ["hoàn tất", "hủy"]:
                 table_id = order["table"]
                 if table_id in tables:
-                    tables[table_id] = "Trống"   # Cập nhật bàn thành trống
+                    tables[table_id] = "Trống"
                     print(f"🧹 Bàn {table_id} đã được dọn và chuyển về trạng thái trống.")
+
         else:
             print("Số thứ tự không hợp lệ.")
 
@@ -77,9 +89,7 @@ def update_order_status():
         print("Vui lòng nhập số hợp lệ.")
 
 
-# ====================================================
-# 🔹 MENU QUẢN LÝ BÀN
-# ====================================================
+# 🔹 QUẢN LÝ BÀN
 def manage_tables():
     while True:
         print("\n=== QUẢN LÝ BÀN ===")
@@ -89,38 +99,50 @@ def manage_tables():
         opt = input("Chọn: ")
 
         if opt == "1":
-            show_tables()             # Xem tình trạng tất cả bàn
+            show_tables()
         elif opt == "2":
-            update_table_status()     # Cập nhật trạng thái bàn
+            update_table_status()
         elif opt == "0":
             break
         else:
             print("Vui lòng chọn đúng số.")
 
 
-# ====================================================
 # 🔹 HIỂN THỊ DANH SÁCH BÀN
-# ====================================================
 def show_tables():
     print("\n===== DANH SÁCH BÀN =====")
-    # tables = {1: "Trống", 2: "Đang phục vụ", ...}
     for t, status in tables.items():
         print(f"Bàn {t}: {status}")
     print("--------------------------")
 
 
-# ====================================================
 # 🔹 CẬP NHẬT TRẠNG THÁI BÀN
-# ====================================================
 def update_table_status():
     try:
         table_id = int(input("Nhập số bàn (1-10): "))
 
         if table_id in tables:
-            # Nhập trạng thái mới cho bàn
-            new_status = input("Trạng thái mới (Trống / Đang phục vụ / Đã dọn): ").capitalize()
+            print("\n=== TRẠNG THÁI BÀN ===")
+            print("1. Trống")
+            print("2. Đang phục vụ")
+            print("3. Đã dọn")
+
+            opt = input("Chọn: ")
+
+            status_map = {
+                "1": "Trống",
+                "2": "Đang phục vụ",
+                "3": "Đã dọn"
+            }
+
+            if opt not in status_map:
+                print("Lựa chọn không hợp lệ.")
+                return
+
+            new_status = status_map[opt]
             tables[table_id] = new_status
             print(f"Đã cập nhật bàn {table_id} thành: {new_status}")
+
         else:
             print("Không tồn tại bàn này.")
 

@@ -2,9 +2,9 @@
 
 # Import các chức năng: đăng ký, đăng nhập, menu khách hàng, nhân viên, admin
 from auth import register, login
-from customer import customer_menu
+from restaurant.customer_menu import customer_menu
 from staff import staff_menu
-from admin import admin_menu
+from restaurant.admin_menu import admin_menu
 
 def main():
     # Vòng lặp chính của chương trình (chạy liên tục cho đến khi chọn Thoát)
@@ -23,6 +23,7 @@ def main():
         elif choice == "2":
             user = login()   # Hàm login() trả về 1 user object hoặc None
 
+        
             if user:
                 # Sau khi đăng nhập thành công → điều hướng theo role
                 if user.role == "customer":
@@ -32,7 +33,7 @@ def main():
                     staff_menu(user)      # Menu cho nhân viên
 
                 elif user.role == "admin":
-                    admin_menu(user)      # Menu cho admin
+                    admin_menu()      # Menu cho admin
 
                 else:
                     print("Vai trò người dùng không hợp lệ.")
