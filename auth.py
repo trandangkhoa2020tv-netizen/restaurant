@@ -15,28 +15,34 @@ def register():
     email = input("Email (dùng làm đăng nhập): ")
     password = input("Mật khẩu: ")
 
-    # --- Chọn vai trò bằng số ---
-    print("\nChọn vai trò:")
-    print("1. Customer (Khách hàng)")
-    print("2. Staff (Nhân viên)")
-    print("3. Admin (Quản trị viên)")
-    role_choice = input("Chọn: ")
+    while True:
+        print("\nChọn vai trò:")
+        print("1. Customer (Khách hàng)")
+        print("2. Staff (Nhân viên)")
+        print("3. Admin (Quản trị viên)")
+        role_choice = input("Chọn(1-3): ")
 
-    # Tạo user dựa vào role
-    if role_choice == "3":
-        role = "admin"
-        user = Admin(name, dob, gender, address, phone, email, password)
-    elif role_choice == "2":
-        role = "staff"
-        user = Staff(name, dob, gender, address, phone, email, password)
-    else:
-        role = "customer"
-        user = Customer(name, dob, gender, address, phone, email, password)
+        if role_choice == "1":
+            role = "customer"
+            user = Customer(name, dob, gender, address, phone, email, password)
+            break
 
-    # Lưu user vào danh sách
+        elif role_choice == "2":
+            role = "staff"
+            user = Staff(name, dob, gender, address, phone, email, password)
+            break
+
+        elif role_choice == "3":
+            role = "admin"
+            user = Admin(name, dob, gender, address, phone, email, password)
+            break
+
+        else:
+            print("Lựa chọn không hợp lệ, vui lòng chọn lại.")
+
+    # Lưu user
     users.append(user)
     print(f"\nĐăng ký {role} thành công!\n")
-
 
 def login():
     print("\n=== ĐĂNG NHẬP ===")

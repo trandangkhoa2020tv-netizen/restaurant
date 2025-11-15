@@ -15,7 +15,7 @@ def main():
         print("1. Đăng ký")
         print("2. Đăng nhập")
         print("0. Thoát")
-        choice = input("Chọn: ")
+        choice = input("Chọn(0-2): ")
 
         # --- ĐĂNG KÝ TÀI KHOẢN ---
         if choice == "1":

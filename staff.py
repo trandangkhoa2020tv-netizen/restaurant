@@ -1,13 +1,17 @@
 from menu_order import orders, tables
+from menu_order import menu_data
 
-def staff_menu():
+def staff_menu(user):
     while True:
         print("\n=== MENU NHÂN VIÊN ===")
         print("1. Xem tất cả đơn hàng")
         print("2. Cập nhật trạng thái đơn")
         print("3. Quản lý bàn (xem/cập nhật)")
+        print("4. Xem danh sách món")
+        print("5. Thêm món")
+        print("6. Xóa món")
         print("0. Thoát")
-        c = input("Chọn: ")
+        c = input("Chọn(0-6): ")
 
         if c == "1":
             view_orders()
@@ -15,10 +19,70 @@ def staff_menu():
             update_order_status()
         elif c == "3":
             manage_tables()
+        elif c == "4":
+            show_menu()
+        elif c == "5":
+            add_food()
+        elif c == "6":
+            delete_food()
         elif c == "0":
+            
             break
         else:
             print("Lựa chọn không hợp lệ, vui lòng nhập lại.")
+
+
+# ===============================
+# 1. Xem danh sách món
+# ===============================
+def show_menu():
+    print("\n=== DANH SÁCH MÓN ===")
+    for cat, items in menu_data.items():
+        print(f"\n--- {cat} ---")
+        for m in items:
+            print(m)
+
+
+# ===============================
+# 2. Thêm món
+# ===============================
+def add_food():
+    print("\nChọn loại món:")
+    print("1. Lẩu")
+    print("2. Món khô")
+    print("3. Nước uống")
+
+    choice = input("Chọn(1-3): ")
+    categories = {"1": "Lẩu", "2": "Món khô", "3": "Nước uống"}
+
+    if choice not in categories:
+        print("Loại món không hợp lệ!")
+        return
+
+    cat = categories[choice]
+    code = input("Mã món: ").upper()
+    name = input("Tên món: ")
+    flavor = input("Khẩu vị: ")
+    price = int(input("Giá bán: "))
+
+    menu_data[cat].append((code, name, flavor, price, "Còn", 0))
+    print("Đã thêm món mới!")
+
+
+# ===============================
+# 3. Xóa món
+# ===============================
+def delete_food():
+    code = input("Nhập mã món cần xóa: ").upper()
+
+    for cat, items in menu_data.items():
+        for m in items:
+            if m[0] == code:
+                items.remove(m)
+                print("Đã xóa món!")
+                return
+
+    print("Không tìm thấy mã món!")
 
 
 # 🔹 XEM TẤT CẢ ĐƠN HÀNG
@@ -56,7 +120,7 @@ def update_order_status():
             print("2. Chế biến")
             print("3. Hoàn tất")
             print("4. Hủy")
-            opt = input("Chọn: ")
+            opt = input("Chọn(1-4): ")
 
             status_map = {
                 "1": "xác nhận",
@@ -96,7 +160,7 @@ def manage_tables():
         print("1. Xem danh sách bàn")
         print("2. Cập nhật trạng thái bàn")
         print("0. Quay lại")
-        opt = input("Chọn: ")
+        opt = input("Chọn(0-2): ")
 
         if opt == "1":
             show_tables()
@@ -127,7 +191,7 @@ def update_table_status():
             print("2. Đang phục vụ")
             print("3. Đã dọn")
 
-            opt = input("Chọn: ")
+            opt = input("Chọn(1-3): ")
 
             status_map = {
                 "1": "Trống",

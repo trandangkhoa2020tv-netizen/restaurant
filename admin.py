@@ -11,7 +11,7 @@ def admin_menu():
         print("5. Quản lý tài khoản")
         print("6. Quản lý hệ thống")
         print("0. Thoát")
-        c = input("Chọn: ")
+        c = input("Chọn(0-6): ")
 
         if c == "1":
             show_menu()
@@ -51,7 +51,7 @@ def add_food():
     print("2. Món khô")
     print("3. Nước uống")
 
-    choice = input("Chọn: ")
+    choice = input("Chọn(1-3): ")
     categories = {"1": "Lẩu", "2": "Món khô", "3": "Nước uống"}
 
     if choice not in categories:
@@ -109,7 +109,7 @@ def manage_accounts():
         print("2. Xóa tài khoản")
         print("3. Thay đổi vai trò tài khoản")
         print("0. Quay lại")
-        choice = input("Chọn: ")
+        choice = input("Chọn(0-3): ")
 
         if choice == "1":
             if not users:
@@ -138,7 +138,7 @@ def manage_accounts():
                     print("1. customer")
                     print("2. staff")
                     print("3. admin")
-                    r = input("Chọn: ")
+                    r = input("Chọn(1-3): ")
                     roles = {"1": "customer", "2": "staff", "3": "admin"}
                     if r in roles:
                         u.role = roles[r]

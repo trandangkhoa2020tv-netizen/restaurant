@@ -15,7 +15,7 @@ def customer_menu(customer):
         print("7. Hủy đơn")
         print("8. Cập nhật thông tin cá nhân")
         print("0. Thoát")
-        c = input("Chọn: ")
+        c = input("Chọn(0-8): ")
 
         # --- HIỂN THỊ MENU MÓN ---
         if c == "1":
@@ -68,7 +68,7 @@ def customer_menu(customer):
                     print("1. Chỉnh số lượng món")
                     print("2. Xóa món")
                     print("0. Quay lại menu")
-                    choice_cart = input("Chọn: ")
+                    choice_cart = input("Chọn(0-2): ")
 
                     if choice_cart == "1":
                         try:
@@ -110,7 +110,7 @@ def customer_menu(customer):
             print("1. Đặt bàn (ăn tại nhà hàng)")
             print("2. Giao hàng tận nơi")
             print("3. Mang đi (tự đến lấy)")
-            choice = input("Chọn: ")
+            choice = input("Chọn(1-3): ")
 
             method = None
             selected_table = None
@@ -144,7 +144,7 @@ def customer_menu(customer):
             print("\nChọn hình thức thanh toán:")
             print("1. Tiền mặt")
             print("2. Chuyển khoản")
-            payment_choice = input("Chọn: ")
+            payment_choice = input("Chọn(1-2): ")
             if payment_choice == "1":
                 payment_method = "Tiền mặt"
             elif payment_choice == "2":
